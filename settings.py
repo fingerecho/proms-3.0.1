@@ -1,5 +1,5 @@
 PROMS_LABEL = 'A PROMS Server'
-HOME_DIR = '../log/'
+HOME_DIR = '/var/log/proms'
 STATIC_DIR = 'static/'
 LOGFILE = HOME_DIR + 'proms.log'
 HOST = '0.0.0.0'

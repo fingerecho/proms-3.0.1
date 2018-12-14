@@ -14,3 +14,14 @@ Please see the CHANGELOG.md file for version notes.
 Support
 -------
 More information is available on the project webpage: https://wiki.csiro.au/display/PROMS.
+
+
+
+Add by fang
+------------
+Config here about uwsgi, nginx
+Set the socket file on /run/uwsgi/proms.socket
+Set Authtication 0777
+The uwsgi run in mode of root
+Set the nginx error log in /var/log/proms/nginx-error.log
+

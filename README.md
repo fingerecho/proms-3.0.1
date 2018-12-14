@@ -25,3 +25,6 @@ Set Authtication 0777
 The uwsgi run in mode of root
 Set the nginx error log in /var/log/proms/nginx-error.log
 
+I setted the process numbers to 2 , this is a debug mode
+set the process numbers to your CPU core number , when this procedure is online 
+

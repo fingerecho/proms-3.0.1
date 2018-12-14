@@ -1,7 +1,7 @@
 PROMS_LABEL = 'A PROMS Server'
 HOME_DIR = '/var/log/proms'
 STATIC_DIR = 'static/'
-LOGFILE = HOME_DIR + 'proms.log'
+LOGFILE = "../" + 'proms.log'
 HOST = '0.0.0.0'
 PORT = 9000
 DEBUG = True

@@ -24,8 +24,8 @@ def db_query_secure(sparql_query):
     try:
         return json.loads(r.text)
     except Exception as e:
-        print((e.message))
-        return [False, e.message]
+        print(e)
+        return [False, e]
 
 
 def db_query_secure_turtle(sparql_query):
@@ -56,8 +56,8 @@ def db_insert(turtle, from_string=False):
             return [False, r.text]
         return [True, r.text]
     except Exception as e:
-        print((e.message))
-        return [False, e.message]
+        print((e))
+        return [False, e]
 
 
 def db_insert_secure(turtle, from_string=False):
@@ -71,8 +71,8 @@ def db_insert_secure(turtle, from_string=False):
         else:
             g.load(turtle, format='n3')
     except Exception as e:
-        print((e.message))
-        return [False, e.message]
+        print((e))
+        return [False, e]
 
     # SPARQL INSERT
     data = {'update': 'INSERT DATA { ' + g.serialize(format='nt') + ' }'}
@@ -84,8 +84,8 @@ def db_insert_secure(turtle, from_string=False):
             return [False, r.text]
         return [True, r.text]
     except Exception as e:
-        print((e.message))
-        return [False, e.message]
+        print((e))
+        return [False, e]
 
 
 def db_insert_secure_named_graph(turtle, graph_uri, from_string=False):
@@ -108,5 +108,5 @@ def db_insert_secure_named_graph(turtle, graph_uri, from_string=False):
             return [False, r.text]
         return [True, r.text]
     except Exception as e:
-        print((e.message))
-        return [False, e.message]
+        print((e))
+        return [False, e]

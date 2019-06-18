@@ -49,7 +49,7 @@ def db_insert(turtle, from_string=False):
         g.load(turtle, format='n3')
 
     # SPARQL INSERT
-    data = {'update': 'INSERT DATA { ' + g.serialize(format='nt') + ' }'}
+    data = {'update': 'INSERT DATA { ' + g.serialize(format='nt').decode(settings.CHARSET) + ' }'}
     r = requests.post(settings.FUSEKI_UPDATE_URI, data=data)
     try:
         if r.status_code != 200 and r.status_code != 201:
@@ -71,11 +71,11 @@ def db_insert_secure(turtle, from_string=False):
         else:
             g.load(turtle, format='n3')
     except Exception as e:
-        print((e))
+        print("exception on parsing or loading"+(e))
         return [False, e]
 
     # SPARQL INSERT
-    data = {'update': 'INSERT DATA { ' + g.serialize(format='nt') + ' }'}
+    data = {'update': 'INSERT DATA { ' + g.serialize(format='nt').decode(settings.CHARSET) + ' }'}
     auth = (settings.FUSEKI_SECURE_USR, settings.FUSEKI_SECURE_PWD)
     #headers = {'Accept': 'application/json'}
     r = requests.post(settings.FUSEKI_SECURE_UPDATE_URI, data=data, auth=auth)
@@ -99,7 +99,7 @@ def db_insert_secure_named_graph(turtle, graph_uri, from_string=False):
         g.load(turtle, format='n3')
 
     # SPARQL INSERT
-    data = {'update': 'INSERT DATA { GRAPH ' + graph_uri + ' { ' + g.serialize(format='nt') + ' } }', format: 'json'}
+    data = {'update': 'INSERT DATA { GRAPH ' + graph_uri + ' { ' + g.serialize(format='nt').decode(settings.CHARSET) + ' } }', format: 'json'}
     auth = (settings.FUSEKI_SECURE_USR, settings.FUSEKI_SECURE_PWD)
     headers = {'Accept': 'text/turtle'}
     try:

@@ -49,11 +49,11 @@ def reportingsystem():
         #read the incoming report
         #only accept turtle POSTS
         if 'text/turtle' in request.headers['Content-Type']:
-            put_result = functions.put_reportingsystem(request.data)
+            put_result = functions.put_reportingsystem(request.data.decode(settings.CHARSET))
             if put_result[0]:
                 return Response('Inserted: ' + put_result[1], status=201, mimetype='text/plain')
             else:
-                return Response('Insert failed for the following reasons:\n\n' + '\n'.join(put_result[1]), status=400, mimetype='text/plain')
+                return Response('Insert failed for the following reasons:\n' + ''.join(put_result[1]), status=400, mimetype='text/plain')
         else:
             return Response('Only turtle documents allowed', status=400, mimetype='text/plain')
 
@@ -95,7 +95,7 @@ def reports():
             if put_result[0]:
                 return Response('Inserted', status=201, mimetype='text/plain')
             else:
-                return Response('Insert failed for the following reasons:\n\n' + '\n'.join(put_result[1]), status=400, mimetype='text/plain')
+                return Response('Insert failed for the following reasons:\n' + ''.join(put_result[1]), status=400, mimetype='text/plain')
         else:
             return Response('Only turtle documents allowed', status=400, mimetype='text/plain')
 

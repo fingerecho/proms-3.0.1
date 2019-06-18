@@ -5,18 +5,20 @@ LOGFILE = "../" + 'proms.log'
 HOST = '0.0.0.0'
 PORT = 9000
 DEBUG = True
+SCHEMA = 'http://'+HOST+':'+str(PORT)
+FUSEKI_SCHEMA = 'http://127.0.0.1:3030'
 
-PROMS_INSTANCE_NAMESPACE_URI = 'http://xhd.fyping.cn/'
+PROMS_INSTANCE_NAMESPACE_URI = SCHEMA+"/"
 
-FUSEKI_QUERY_URI = 'http://xhd.fyping.cn/fuseki/data/query'
-FUSEKI_UPDATE_URI = 'http://xhd.fyping.cn/fuseki/data/update'
+FUSEKI_QUERY_URI = SCHEMA +'/tdb/data/query'
+FUSEKI_UPDATE_URI = SCHEMA +'/tdb/data/update'
 
-FUSEKI_SECURE_QUERY_URI = 'http://xhd.fyping.cn/fuseki/data/query'
-FUSEKI_SECURE_UPDATE_URI = 'http://xhd.fyping.cn/fuseki/data/update'
+FUSEKI_SECURE_QUERY_URI = SCHEMA +'/tdb/data'
+FUSEKI_SECURE_UPDATE_URI = SCHEMA +'/tdb/data'
 
-FUSEKI_SECURE_USR = 'fusekiusr'
+FUSEKI_SECURE_USR = ''
 # Make sure this password matches the one entered during Fuseki installation
-FUSEKI_SECURE_PWD = 'fusekirocks'
+FUSEKI_SECURE_PWD = ''
 # Request Timeout in seconds
 FUSEKI_TIMEOUT = 5
 
@@ -27,5 +29,5 @@ PINGBACK_CONFIG = {
 # Comma separated list of known PROMS instances that receive pingback
 KNOWN_PROMS_INSTANCES = []
 
-DPN_BASE_URI = 'http://xhd.fyping.cn'
-
+DPN_BASE_URI = HOST+':'+str(PORT)
+CHARSET = 'utf-8'

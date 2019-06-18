@@ -220,7 +220,7 @@ def put_reportingsystem(reportingsystem_in_turtle):
         if result[0]:
             return [True, 'OK']
         else:
-            return [False, 'Error writing report to triplestore']
+            return [False, 'Error writing report to triplestore, because of %s'%(str(result))]
     else:
         return [False, fail_reasons]
 
